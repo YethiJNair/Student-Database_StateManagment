@@ -28,95 +28,100 @@ class EditStudents extends StatelessWidget {
     placeController.text = data.place;
     phoneController.text = data.phone;
     path = data.image;
-    return Scaffold(
-      appBar: AppBar(
-        title: Padding(
-          padding: const EdgeInsets.fromLTRB(0, 0, 50, 0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Text('Edit Students'),
-            ],
+    return Container(
+      color: Colors.black,
+      child: Scaffold(
+        backgroundColor: Colors.black.withOpacity(0),
+        appBar: AppBar(
+          backgroundColor: Colors.black.withOpacity(0),
+          title: Padding(
+            padding: const EdgeInsets.fromLTRB(0, 0, 50, 0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Text('Edit Students'),
+              ],
+            ),
           ),
         ),
-      ),
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 60),
-          child: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  Consumer(builder: (context, ref, child) {
-                    final value = ref.watch(imageProvider);
-                    return CircleAvatar(
-                      radius: 90,
-                      backgroundImage: FileImage(
-                        File(value),
-                      ),
-                    );
-                  }),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  MyTextField(
-                      controller: nameController,
-                      hint: data.name,
-                      icon: Icons.abc_rounded),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  MyTextField(
-                      controller: ageController,
-                      hint: data.age,
-                      icon: Icons.numbers),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  MyTextField(
-                      controller: placeController,
-                      hint: data.place,
-                      icon: Icons.location_on),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  MyTextField(
-                      controller: phoneController,
-                      hint: data.phone,
-                      icon: Icons.phone),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  Consumer(
-                    builder: (context, ref, child) {
-                      return ElevatedButton.icon(
-                        onPressed: () async {
-                          path = await getImage();
-                          ref.read(imageProvider.notifier).state = path!;
-                        },
-                        label: const Text('+'),
-                        icon: const Icon(Icons.photo),
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.grey),
+        body: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 60),
+            child: Center(
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  // ignore: prefer_const_literals_to_create_immutables
+                  children: [
+                    Consumer(builder: (context, ref, child) {
+                      final value = ref.watch(imageProvider);
+                      return CircleAvatar(
+                        radius: 90,
+                        backgroundImage: FileImage(
+                          File(value),
                         ),
                       );
-                    },
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      Edit(index, path);
-                      Navigator.pop(context);
-                    },
-                    label: const Text('Save'),
-                    icon: const Icon(Icons.save),
-                  )
-                ],
+                    }),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    MyTextField(
+                        controller: nameController,
+                        hint: data.name,
+                        icon: Icons.abc_rounded),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    MyTextField(
+                        controller: ageController,
+                        hint: data.age,
+                        icon: Icons.numbers),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    MyTextField(
+                        controller: placeController,
+                        hint: data.place,
+                        icon: Icons.location_on),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    MyTextField(
+                        controller: phoneController,
+                        hint: data.phone,
+                        icon: Icons.phone),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    Consumer(
+                      builder: (context, ref, child) {
+                        return ElevatedButton.icon(
+                          onPressed: () async {
+                            path = await getImage();
+                            ref.read(imageProvider.notifier).state = path!;
+                          },
+                          label: const Text('+'),
+                          icon: const Icon(Icons.photo),
+                          style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.grey),
+                          ),
+                        );
+                      },
+                    ),
+                    const SizedBox(
+                      height: 8,
+                    ),
+                    ElevatedButton.icon(
+                      onPressed: () {
+                        Edit(index, path);
+                        Navigator.pop(context);
+                      },
+                      label: const Text('Save'),
+                      icon: const Icon(Icons.save),
+                    )
+                  ],
+                ),
               ),
             ),
           ),

@@ -24,55 +24,65 @@ class SearchScreen extends StatelessWidget {
       List<StudentModel>.from(studentBoxList);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text("Search Students"),
-        ),
-        body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            child: Consumer(builder: (context, ref, child) {
-              final values = ref.watch(searchprovider);
-              return Column(
-                children: [
-                  Padding(
-                      padding: const EdgeInsets.only(top: 5, bottom: 7),
-                      child: TextField(
-                        decoration: const InputDecoration(
-                            border: OutlineInputBorder(), hintText: 'Search'),
-                        controller: _searchController,
-                        onChanged: (value) {
-                          ref.read(searchprovider.notifier).state =
-                              studentBoxList
-                                  .where((element) => element.name
-                                      .toLowerCase()
-                                      .contains(value.toLowerCase()))
-                                  .toList();
-                          displayStudent = values;
-                        },
-                      )),
-                  Expanded(
-                    child: (displayStudent.isNotEmpty)
-                        ? ListView.separated(
-                            itemBuilder: (context, index) {
-                              File imageFile =
-                                  File(displayStudent[index].image);
-                              return ListTile(
-                                leading: CircleAvatar(
-                                  backgroundImage: FileImage(imageFile),
-                                  radius: 20,
-                                ),
-                                title: Text(displayStudent[index].name),
-                              );
-                            },
-                            separatorBuilder: (ctx, index) {
-                              return const Divider();
-                            },
-                            itemCount: displayStudent.length,
-                          )
-                        : const Center(child: Text("The data is not Found")),
-                  ),
-                ],
-              );
-            })));
+    return Container(
+      color: Colors.black,
+      child: Scaffold(
+          backgroundColor: Colors.black.withOpacity(0),
+          appBar: AppBar(
+            backgroundColor: Colors.black.withOpacity(0),
+            title: const Text("Search Students"),
+          ),
+          body: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: Consumer(builder: (context, ref, child) {
+                final values = ref.watch(searchprovider);
+                return Column(
+                  children: [
+                    Padding(
+                        padding: const EdgeInsets.only(top: 5, bottom: 7),
+                        child: TextField(
+                          decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              hintText: 'Search',
+                              hintStyle: TextStyle(color: Colors.white)),
+                          controller: _searchController,
+                          onChanged: (value) {
+                            ref.read(searchprovider.notifier).state =
+                                studentBoxList
+                                    .where((element) => element.name
+                                        .toLowerCase()
+                                        .contains(value.toLowerCase()))
+                                    .toList();
+                            displayStudent = values;
+                          },
+                        )),
+                    Expanded(
+                      child: (displayStudent.isNotEmpty)
+                          ? ListView.separated(
+                              itemBuilder: (context, index) {
+                                File imageFile =
+                                    File(displayStudent[index].image);
+                                return ListTile(
+                                  leading: CircleAvatar(
+                                    backgroundImage: FileImage(imageFile),
+                                    radius: 20,
+                                  ),
+                                  title: Text(
+                                    displayStudent[index].name,
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                );
+                              },
+                              separatorBuilder: (ctx, index) {
+                                return const Divider();
+                              },
+                              itemCount: displayStudent.length,
+                            )
+                          : const Center(child: Text("The data is not Found")),
+                    ),
+                  ],
+                );
+              }))),
+    );
   }
 }

@@ -12,7 +12,7 @@ class ShowDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 161, 161, 161),
+      backgroundColor: Color.fromARGB(255, 0, 0, 0),
       appBar: AppBar(
         backgroundColor: Colors.blue.withOpacity(0),
         title: const Text("Student Details"),

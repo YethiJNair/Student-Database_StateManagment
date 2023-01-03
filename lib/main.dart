@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Student List',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
       home: ScreenHome(),
       debugShowCheckedModeBanner: false,
