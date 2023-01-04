@@ -100,7 +100,7 @@ class StudentsNav extends StatelessWidget {
                         },
                         icon: const Icon(
                           Icons.edit,
-                          color: Colors.red,
+                          color: Color.fromARGB(255, 255, 255, 255),
                         ),
                       ),
                     ],

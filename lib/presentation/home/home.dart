@@ -15,18 +15,21 @@ class ScreenHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer(builder: (context, ref, child) {
-          final value = ref.watch(pageprovider);
-      return
-      Scaffold(
+      final value = ref.watch(pageprovider);
+      return Scaffold(
         body: _pages[value],
         bottomNavigationBar: BottomNavigationBar(
+            selectedItemColor: Colors.white,
+            backgroundColor: Color.fromARGB(255, 202, 202, 202),
             currentIndex: value,
             onTap: (newindex) {
               ref.read(pageprovider.notifier).state = newindex;
             },
             items: const [
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
+                icon: Icon(
+                  Icons.home,
+                ),
                 label: 'home',
               ),
               BottomNavigationBarItem(

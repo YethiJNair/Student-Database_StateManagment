@@ -38,9 +38,10 @@ class AddStudentsWidget extends StatelessWidget {
                       height: 15,
                     ),
                     MyTextField(
-                        controller: nameController,
-                        hint: 'Name',
-                        icon: Icons.abc_rounded),
+                      controller: nameController,
+                      hint: 'Name',
+                      icon: Icons.abc_rounded,
+                    ),
                     const SizedBox(
                       height: 8,
                     ),
@@ -65,25 +66,37 @@ class AddStudentsWidget extends StatelessWidget {
                     const SizedBox(
                       height: 8,
                     ),
-                    ElevatedButton.icon(
-                      onPressed: () {
-                        getImage();
-                      },
-                      label: const Text('+'),
-                      icon: const Icon(Icons.photo),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(Colors.grey),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    ElevatedButton.icon(
-                      onPressed: () {
-                        AddButton(context);
-                      },
-                      label: const Text('Add'),
-                      icon: const Icon(Icons.add),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        SizedBox(
+                          width: 100,
+                          child: ElevatedButton.icon(
+                            onPressed: () {
+                              getImage();
+                            },
+                            label: const Text('+'),
+                            icon: const Icon(Icons.photo),
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.grey),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        SizedBox(
+                          width: 100,
+                          child: ElevatedButton.icon(
+                            onPressed: () {
+                              AddButton(context);
+                            },
+                            label: const Text('Add'),
+                            icon: const Icon(Icons.add),
+                          ),
+                        ),
+                      ],
                     )
                   ],
                 ),

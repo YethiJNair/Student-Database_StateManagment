@@ -12,10 +12,14 @@ class MyTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      style: const TextStyle(color: Colors.white),
       controller: controller,
       decoration: InputDecoration(
-          prefixIcon: Icon(icon),
-          iconColor: Color.fromARGB(255, 255, 255, 255),
+          prefixIcon: Icon(
+            icon,
+            color: Colors.white,
+          ),
+          
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: const BorderSide(

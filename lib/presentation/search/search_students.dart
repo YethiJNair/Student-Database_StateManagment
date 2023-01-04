@@ -41,8 +41,12 @@ class SearchScreen extends StatelessWidget {
                     Padding(
                         padding: const EdgeInsets.only(top: 5, bottom: 7),
                         child: TextField(
+                          style: TextStyle(color: Colors.white),
                           decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide:
+                                    BorderSide(color: Colors.white, width: 2),
+                              ),
                               hintText: 'Search',
                               hintStyle: TextStyle(color: Colors.white)),
                           controller: _searchController,
